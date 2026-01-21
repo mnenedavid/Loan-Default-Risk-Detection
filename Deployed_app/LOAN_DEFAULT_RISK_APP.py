@@ -191,6 +191,16 @@ st.markdown("""
 def load_deployment_package():
     """Load deployment package with model and preprocessor"""
     try:
+        # Get current directory of this script
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Build paths
+        model_path = os.path.join(current_dir, 'lightgbm_model.pkl')
+        transformers_path = os.path.join(current_dir, 'deployment_transformers.pkl')
+        
+        # Debug output (remove after fixing)
+        st.sidebar.info(f"Loading from: {current_dir}")
+        
         # Load the pre-trained model
         model = joblib.load('lightgbm_model.pkl')
         
