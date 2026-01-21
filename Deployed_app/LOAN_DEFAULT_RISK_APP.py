@@ -199,8 +199,23 @@ def load_deployment_package():
         model_path = os.path.join(current_dir, 'lightgbm_model.pkl')
         transformers_path = os.path.join(current_dir, 'deployment_transformers.pkl')
         
-        # Debug output (remove after fixing)
-        st.sidebar.info(f"Loading from: {current_dir}")
+        # DEBUG: Show full paths
+        st.error(f"Model path: {model_path}")
+        st.error(f"Transformers path: {transformers_path}")
+        
+        # Check if files exist
+        if not os.path.exists(model_path):
+            st.error(f"ERROR: Model file does not exist at {model_path}")
+            # List directory contents
+            files = os.listdir(current_dir)
+            st.error(f"Files in directory: {files}")
+            return None, None, None, None
+            
+        if not os.path.exists(transformers_path):
+            st.error(f"ERROR: Transformers file does not exist at {transformers_path}")
+            return None, None, None, None
+            
+        st.success("✓ Model file found!")
         
         # Load the pre-trained model
         model = joblib.load('lightgbm_model.pkl')
