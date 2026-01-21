@@ -233,11 +233,6 @@ def load_deployment_package():
         # Build paths
         model_path = os.path.join(current_dir, 'lightgbm_model.pkl')
         transformers_path = os.path.join(current_dir, 'deployment_transformers.pkl')
-        
-        # DEBUG: Show full paths
-        st.error(f"Model path: {model_path}")
-        st.error(f"Transformers path: {transformers_path}")
-        
             
         if not os.path.exists(transformers_path):
             st.error(f"ERROR: Transformers file does not exist at {transformers_path}")
