@@ -192,6 +192,13 @@ st.markdown("""
 def load_deployment_package():
     """Load deployment package with model and preprocessor"""
     try:
+
+        # DEBUG: Check environment at load time
+        import numpy as np
+        import sys
+        st.error(f"LOAD DEBUG - Numpy version: {np.__version__}")
+        st.error(f"LOAD DEBUG - Has numpy._core: {hasattr(np, '_core')}")
+        st.error(f"LOAD DEBUG - Has numpy.core: {hasattr(np, 'core')}")
         # Get current directory of this script
         current_dir = os.path.dirname(os.path.abspath(__file__))
         
@@ -314,6 +321,21 @@ def get_risk_level(probability):
         return "HIGH RISK", "#DC2626", "TAKE ACTION", "🔴"
 
 def main():
+    # DEBUG: Check numpy version
+    import numpy as np
+    import sys
+    st.sidebar.write(f"Python version: {sys.version}")
+    st.sidebar.write(f"Numpy version: {np.__version__}")
+    st.sidebar.write(f"Numpy path: {np.__file__}")
+    
+    # Check if numpy._core exists
+    st.sidebar.write(f"Has numpy._core: {hasattr(np, '_core')}")
+    st.sidebar.write(f"Has numpy.core: {hasattr(np, 'core')}")
+    
+    # List all attributes starting with 'core'
+    core_attrs = [attr for attr in dir(np) if 'core' in attr.lower()]
+    st.sidebar.write(f"Numpy 'core' attributes: {core_attrs}")
+    
     # Header
     st.markdown('<div class="main-header">🏦 Loan Default Risk Detector</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-header">Professional 3-Tier Risk Assessment System</div>', unsafe_allow_html=True)
