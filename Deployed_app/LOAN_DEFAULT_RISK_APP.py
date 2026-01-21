@@ -11,6 +11,40 @@ import os
 import plotly.graph_objects as go
 from sklearn.base import BaseEstimator, TransformerMixin
 
+# ================== NUMPY _CORE FIX ==================
+# Force numpy to have _core attribute
+import numpy as np
+
+# Check and fix numpy._core
+if not hasattr(np, '_core'):
+    print("FIXING: Creating numpy._core from numpy.core")
+    
+    # Import numpy.core
+    import numpy.core
+    
+    # Create _core as an alias to core
+    np._core = numpy.core
+    
+    # Also update sys.modules
+    import sys
+    sys.modules['numpy._core'] = numpy.core
+    
+    # Create submodules
+    if hasattr(numpy.core, 'multiarray'):
+        np._core.multiarray = numpy.core.multiarray
+        sys.modules['numpy._core.multiarray'] = numpy.core.multiarray
+    
+    if hasattr(numpy.core, 'umath'):
+        np._core.umath = numpy.core.umath
+        sys.modules['numpy._core.umath'] = numpy.core.umath
+    
+    if hasattr(numpy.core, '_multiarray_umath'):
+        np._core._multiarray_umath = numpy.core._multiarray_umath
+        sys.modules['numpy._core._multiarray_umath'] = numpy.core._multiarray_umath
+
+print(f"After fix - Has numpy._core: {hasattr(np, '_core')}")
+# =====================================================
+
 # ================== PREPROCESSOR CLASS DEFINITION ==================
 class LoanDeploymentPreprocessor(BaseEstimator, TransformerMixin):
     """
