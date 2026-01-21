@@ -227,12 +227,6 @@ def load_deployment_package():
     """Load deployment package with model and preprocessor"""
     try:
 
-        # DEBUG: Check environment at load time
-        import numpy as np
-        import sys
-        st.error(f"LOAD DEBUG - Numpy version: {np.__version__}")
-        st.error(f"LOAD DEBUG - Has numpy._core: {hasattr(np, '_core')}")
-        st.error(f"LOAD DEBUG - Has numpy.core: {hasattr(np, 'core')}")
         # Get current directory of this script
         current_dir = os.path.dirname(os.path.abspath(__file__))
         
@@ -244,19 +238,11 @@ def load_deployment_package():
         st.error(f"Model path: {model_path}")
         st.error(f"Transformers path: {transformers_path}")
         
-        # Check if files exist
-        if not os.path.exists(model_path):
-            st.error(f"ERROR: Model file does not exist at {model_path}")
-            # List directory contents
-            files = os.listdir(current_dir)
-            st.error(f"Files in directory: {files}")
-            return None, None, None, None
             
         if not os.path.exists(transformers_path):
             st.error(f"ERROR: Transformers file does not exist at {transformers_path}")
             return None, None, None, None
             
-        st.success("✓ Model file found!")
         
         # FIXED: Use the absolute paths, not relative paths!
         model = joblib.load(model_path)  
@@ -355,20 +341,6 @@ def get_risk_level(probability):
         return "HIGH RISK", "#DC2626", "TAKE ACTION", "🔴"
 
 def main():
-    # DEBUG: Check numpy version
-    import numpy as np
-    import sys
-    st.sidebar.write(f"Python version: {sys.version}")
-    st.sidebar.write(f"Numpy version: {np.__version__}")
-    st.sidebar.write(f"Numpy path: {np.__file__}")
-    
-    # Check if numpy._core exists
-    st.sidebar.write(f"Has numpy._core: {hasattr(np, '_core')}")
-    st.sidebar.write(f"Has numpy.core: {hasattr(np, 'core')}")
-    
-    # List all attributes starting with 'core'
-    core_attrs = [attr for attr in dir(np) if 'core' in attr.lower()]
-    st.sidebar.write(f"Numpy 'core' attributes: {core_attrs}")
     
     # Header
     st.markdown('<div class="main-header">🏦 Loan Default Risk Detector</div>', unsafe_allow_html=True)
