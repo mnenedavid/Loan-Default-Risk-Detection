@@ -217,16 +217,14 @@ def load_deployment_package():
             
         st.success("✓ Model file found!")
         
-        # Load the pre-trained model
-        model = joblib.load('lightgbm_model.pkl')
-        
-        # Load deployment transformers for metadata
-        deployment_transformers = joblib.load('deployment_transformers.pkl')
+        # FIXED: Use the absolute paths, not relative paths!
+        model = joblib.load(model_path)  
+        deployment_transformers = joblib.load(transformers_path) 
         
         # Get feature names from deployment transformers
         feature_names = deployment_transformers['feature_names']
         
-        # Create a fresh preprocessor instance (instead of loading pickled one)
+        # Create a fresh preprocessor instance
         preprocessor = LoanDeploymentPreprocessor(deployment_transformers)
         
         return model, preprocessor, feature_names, deployment_transformers
