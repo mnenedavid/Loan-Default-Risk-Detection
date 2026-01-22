@@ -14,3 +14,25 @@ This project develops a supervised machine learning framework for early loan def
 
 2.  **Data Understanding**
    
+ 2.1 **Data Source**
+ 
+The dataset consists of loan-level data collected from Micromart Africa’s digital lending platform, focusing on SME and youth entrepreneur borrowers.
+
+ 2.2 **Data Overview**
+
+Total records: 277,159 loans
+
+Problem type: Binary classification
+
+Target variable: is_default (1 = Default, 0 = Non-default)
+
+2.3 **Feature Categories**
+
+Borrower Attributes: Age, Gender, Account Age
+
+Loan Characteristics: Principal Amount, Interest, Loan Term, Product Type, Number of Installments
+
+Repayment Behavior: Total paid, Unpaid Balance, Days Late, Number of Late Payments, Number of on-time payments
+
+The dataset combines demographic, transactional, and behavioral data, making it suitable for supervised credit risk modeling.
+   
