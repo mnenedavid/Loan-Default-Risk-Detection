@@ -12,3 +12,5 @@ This project develops a supervised machine learning framework for early loan def
 
     Promote financial inclusion through fairer, data-driven credit decisions
 
+2.  **Data Understanding**
+   
