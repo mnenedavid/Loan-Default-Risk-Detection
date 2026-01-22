@@ -5,11 +5,8 @@ Small and Medium Enterprises (SMEs) and youth entrepreneurs in emerging markets 
 This project develops a supervised machine learning framework for early loan default risk detection, enabling lenders to:
 
     Reduce non-performing loans (NPLs)
-
     Identify high-risk borrowers early
-
     Enable proactive intervention strategies
-
     Promote financial inclusion through fairer, data-driven credit decisions
 
 2.  **Data Understanding**
