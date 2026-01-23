@@ -254,16 +254,19 @@ Random Forest Model Performance
 **Random Forest for Early Loan Default Risk Detection**
 
 Better Default Detection (Recall)
+
     • Random Forest catches 93.95% of defaults vs. 92.53% for Logistic Regression
     • Additional 1.42% of at-risk loans identified → potentially significant business impact
     • Closer to the Best CV Recall of 98.12% during hyperparameter tuning
     
 Higher Precision
+
     • 98.83% precision means even fewer false alarms
     • When RF predicts "default", it's correct 98.8% of the time
     • Reduces operational costs of investigating false positives
     
 Potential Overfitting Concern
+
     • Training metrics near perfect (99.99%) but test metrics are lower
     • This gap suggests some overfitting, but still strong generalization
     • Business implication: Model is highly optimized on historical data
