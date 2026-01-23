@@ -59,14 +59,14 @@ Target Variable: is_default
 
 -The dataset exhibited moderate class Imbalance so our Evaluation matrix included
 
-        ◦ Precision & Recall (especially for the minority "Default"              class)
+        ◦ Precision & Recall (especially for the minority "Default" class)
         ◦ F1-Score (balance between precision and recall)
         ◦ ROC-AUC (overall discrimination ability)
         ◦ Confusion Matrix (visualize trade-offs)
 
 **Recommendation**
 
--Data splitting-We used stratified sampling (train/test/validation) to maintain the ∼80:20 class ratio.
+-For Data splitting we used stratified sampling (train/test/validation) to maintain the 80:20 class ratio.
 
 Model Selection-Algorithms that handle model imbalance well:
         ◦ Random Forest (class weighting)
@@ -92,19 +92,19 @@ This implies that Q3 carries the highest risk, possibly due to seasonal economi
 2. Default Rate by Gender (Minimal Difference)
     • Gender 1.0: 19.51% default
     • Gender 2.0: 19.88% default
-    • The difference is negligible (<0.4 percentage points), indicating gender is not a strong differentiator of default risk.
+    • The difference is negligible (<0.4 percentage points), indicating gender is not a strong differentiator of          default risk.
     
 3. Default Rate by Loan Type (Significant Difference)
     • New Loans: 25.29% default rate
     • Existing Loans: 17.99% default rate
     • Difference: 7.3 percentage points
     
-New loans are significantly riskier, which aligns with typical lending patterns even in the industry where new borrowers have unproven creditworthiness.
+New loans are significantly riskier, which aligns with typical lending patterns, even in the current financial industry, where new borrowers have unproven creditworthiness.
 
 4. Top 10 Products by Default Rate
-    • Product 30149 has 100% default rate but only 2 loans (small            sample).
-    • Other high-risk products have default rates ranging from 40% to         83%.
-    • These high-risk products represent specific segments that may          need product-level risk review.
+    • Product 30149 has 100% default rate but only 2 loans (small sample).
+    • Other high-risk products have default rates ranging from 40% to 83%.
+    • These high-risk products represent specific segments that may need product-level risk review.
 
 **Payment Behaviour Analysis**
 
@@ -112,7 +112,7 @@ New loans are significantly riskier, which aligns with typical lending patterns 
 
 **Interpretations and Recommendations**
 
-1. Default is Preceded by Clear Delinquency Patterns
+1. Default is Preceeded by Clear Delinquency Patterns
 Defaulters show classic delinquency patterns:
     • Chronic lateness (avg 222 days late)
     • Maximum lateness extending over a year
@@ -154,7 +154,7 @@ Interpretation and Recommendation
 
 3. Loan Term Days vs. Default
 
-      Defaulters tend to have shorter loan terms compared to non-defaulters. This is because they require larger periodic                payments, less time for financial recovery and may divert the purpose
+Defaulters tend to have shorter loan terms compared to non-defaulters. This is because they require larger periodic payments, less time for financial recovery and may divert the purpose
 
  **Customer Demographics Analysis**
 
