@@ -42,7 +42,7 @@ Extreme cases with high levels of missing data were dropped to reduce noise and 
 We dropped unique IDs used for tracking and do not provide predictive value for loan repayment behavior
 
 3.2 **Duplicates**
-Our data had no duplicated values
+Our data had no duplicate values
 
 
 3.3 **Exploratory Data Analysis(EDA)**
@@ -66,7 +66,7 @@ Target Variable: is_default
 
 **Recommendation**
 
--For Data splitting we used stratified sampling (train/test/validation) to maintain the 80:20 class ratio.
+-For Data splitting, we used stratified sampling (train/test/validation) to maintain the 80:20 class ratio.
 
 Model Selection-Algorithms that handle model imbalance well:
         ◦ Random Forest (class weighting)
@@ -143,17 +143,19 @@ Recommendations:
 
 **Loan Characteristics Analysis**
 
+<img width="1" height="1" alt="Loan Characteristics distribution" src="https://github.com/user-attachments/assets/3ed984a6-2618-430b-9d51-bd0723c812fb" />
+
 Interpretation and Recommendation
 
 1. Loan Amount vs. Default
          ◦ Small loan amounts have more defaulters
-         ◦ Large loan amounts have less defaulters
-   implying that small loans carry disproportionate risk.
+         ◦ Large loan amounts have fewer defaulters
+   Implying that small loans carry disproportionate risk.
 
 2. Interest Rate vs. Default-both very high and very low interest rates are associated with default
 
 3. Loan Term Days vs. Default
-
+4. 
 Defaulters tend to have shorter loan terms compared to non-defaulters. This is because they require larger periodic payments, less time for financial recovery and may divert the purpose
 
  **Customer Demographics Analysis**
@@ -189,13 +191,13 @@ Findings- Default risk decreases with  account age
     • previous_loan_count: -0.10 (weak negative)
     • age: -0.07 (weak negative)
     • account_age_days: -0.07 (weak negative)
-This implies Higher delinquency (more days late) strongly predicts default, while more experienced borrowers (older, more loans) are slightly less likely to default.
+This implies that higher delinquency (more days late) strongly predicts default, while more experienced borrowers (older, more loans) are slightly less likely to default.
 
 2. High Feature Collinearity (Potential Redundancy)
     • max_days_late & avg_days_late: 0.91 (very strong correlation)
     • account_age_days & previous_loan_count: 0.83 (strong correlation)
-    • loanamount & previous_loan_count: 0.45 (moderate correlation)
-    • loanamount & interest_rate: 0.35 (moderate correlation)
+    • loan amount & previous_loan_count: 0.45 (moderate correlation)
+    • loan amount & interest_rate: 0.35 (moderate correlation)
     
 3. Weak or Negligible Correlations with Default
     • total_unpaid_amount: 0.001 (almost no correlation)
@@ -214,10 +216,10 @@ For this use case:
     • Recall is the most critical metric → We want to get as many potential defaults as possible (minimize false negatives)
     • Precision is important but secondary → Some false positives are acceptable if we catch more true defaults
 
-   ** **Test Set Results (Most Important):****
+   **Test Set Results (Most Important)**
    
     • Recall: 92.53% → Captures 92.5% of actual defaults (good for early warning)
-    • Precision: 97.64% → When model predicts "default", it's correct 97.6% of the time
+    • Precision: 97.64% → When the model predicts "default", it's correct 97.6% of the time
     • F1-Score: 95.01% → Strong balance between precision and recall
     • Accuracy: 98.07% → Overall prediction accuracy
     
@@ -241,18 +243,18 @@ Seasonality effects were observed, with December loans showing elevated default 
 
 Models Choosen
 🔹 Random Forest
-Why: Captures nonlinear interactions, Robust to noisy features & Strong with behavioral data
+It captures nonlinear interactions, Robust to noisy features and Strong with behavioral data
 
 Top 15 Most Important Features(Random Forest)
 <img width="586" height="415" alt="Top 15 most important-random forest" src="https://github.com/user-attachments/assets/0645dd99-e69b-499e-a681-2d6f309b19ae" />
 
 
 🔹 LightGBM
-Why: Employed to model complex non-linear interactions in repayment behavior
+It is employed to model complex non-linear interactions in repayment behavior
 
 Why LightGBM is Superior:
     1. Highest Default Detection Rate (95.84% recall)
-        ◦ Catches ~240 more defaults per 10,000 loans compared to Random Forest
+        ◦ Catches 240 more defaults per 10,000 loans compared to Random Forest
         ◦ Critical for risk minimization in early detection systems
     2. Best Overall Performance Balance
         ◦ Highest F1-score (97.25%) → optimal precision-recall tradeoff
@@ -266,7 +268,7 @@ Why LightGBM is Superior:
         ◦ Native support for categorical features
 
    Business Justification for Choosing LightGBM:
-1. Exceptional & Consistent Performance
+1. Exceptional and Consistent Performance
     • F1-Score > 99% across all folds
     • Minimal variation (±0.07%) → model is not overfitting
     • Reliable across different data segments
@@ -310,14 +312,16 @@ Conclusion: LightGBM provides the best balance between risk detection, reliabili
 
 **RECOMMENDATIONS AND CONCLUSION**
 
-1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate the borrower characteristics such as num_ontime_payments, num_late_payments, avg_installment_paid and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
+1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate that borrower characteristics such as num_ontime_payments, num_late_payments, avg_installment_paid, and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
+   
 2. Risk-Based Borrower Segmentation Rather than treating all borrowers equally, lenders should classify applicants into different risk categories such as low, medium, and high-risk based on the predicted probability of default. This would allow institutions to:
     • Offer lower interest rates and higher loan limits to low-risk borrowers,
     • Apply stricter conditions or higher interest rates to medium-risk borrowers, and
     • Limit exposure to high-risk borrowers or require additional guarantees. This approach supports both financial                inclusion and portfolio sustainability.
+   
 3. Use of the Model as an Early Warning System By periodically updating borrower data, the institution can identify customers whose risk of default is increasing and take early action such as sending reminders, offering financial guidance, or restructuring loans. This can help reduce non-performing loans.
-4. Integration with Human Decision-Making Although the model provides valuable insights, it should be used as a decision-support tool rather than a complete replacement for loan officers. Human judgement is still important, especially for borderline cases or for assessing qualitative factors such as business viability and local market conditions.
-5. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
+5. Integration with Human Decision-Making Although the model provides valuable insights, it should be used as a decision-support tool rather than a complete replacement for loan officers. Human judgement is still important, especially for borderline cases or for assessing qualitative factors such as business viability and local market conditions.
+6. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
 
 
 
