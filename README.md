@@ -252,25 +252,32 @@ Random Forest Model Performance
 <img width="362" height="65" alt="Random Forest Performance" src="https://github.com/user-attachments/assets/d47b8c1c-b148-41a4-b437-0592dd9e4cde" />
 
 **Random Forest for Early Loan Default Risk Detection**
+
 Better Default Detection (Recall)
     • Random Forest catches 93.95% of defaults vs. 92.53% for Logistic Regression
-    • Additional 1.42% of at-risk loans identified → potentially             significant business impact
-    • Closer to the Best CV Recall of 98.12% during hyperparameter            tuning
+    • Additional 1.42% of at-risk loans identified → potentially significant business impact
+    • Closer to the Best CV Recall of 98.12% during hyperparameter tuning
+    
 Higher Precision
     • 98.83% precision means even fewer false alarms
     • When RF predicts "default", it's correct 98.8% of the time
     • Reduces operational costs of investigating false positives
+    
 Potential Overfitting Concern
     • Training metrics near perfect (99.99%) but test metrics are lower
-    • This gap suggests some overfitting, but still strong                   generalization
-    • Business implication: Model is highly optimized on historical          data
+    • This gap suggests some overfitting, but still strong generalization
+    • Business implication: Model is highly optimized on historical data
+    
 **Business Implications for Early Default Detection:**
+
 Advantages of Random Forest:
-    1. Higher recall → Catches more potential defaults (critical for          risk management)
-    2. Higher precision → Fewer false alarms (reduces operational             costs)
+    1. Higher recall → Catches more potential defaults (critical for risk management)
+    2. Higher precision → Fewer false alarms (reduces operational costs)
     3. Faster training → More efficient model development
-    4. Non-linear relationships → Better captures complex patterns in         loan data
+    4. Non-linear relationships → Better captures complex patterns in loan data
+    
 **Considerations:**
+
     1. Slight overfitting → Monitor performance on new data closely
     2. Model complexity → Harder to interpret than logistic regression
 
