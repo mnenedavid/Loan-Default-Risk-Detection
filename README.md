@@ -315,13 +315,15 @@ Conclusion: LightGBM provides the best balance between risk detection, reliabili
 1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate that borrower characteristics such as num_ontime_payments, num_late_payments, avg_installment_paid, and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
    
 2. Risk-Based Borrower Segmentation Rather than treating all borrowers equally, lenders should classify applicants into different risk categories such as low, medium, and high-risk based on the predicted probability of default. This would allow institutions to:
-    • Offer lower interest rates and higher loan limits to low-risk borrowers,
-    • Apply stricter conditions or higher interest rates to medium-risk borrowers, and
-    • Limit exposure to high-risk borrowers or require additional guarantees. This approach supports both financial                inclusion and portfolio sustainability.
+       • Offer lower interest rates and higher loan limits to low-risk borrowers,
+       • Apply stricter conditions or higher interest rates to medium-risk borrowers, and
+       • Limit exposure to high-risk borrowers or require additional guarantees. This approach supports both financial                inclusion and portfolio sustainability.
    
-3. Use of the Model as an Early Warning System By periodically updating borrower data, the institution can identify customers whose risk of default is increasing and take early action such as sending reminders, offering financial guidance, or restructuring loans. This can help reduce non-performing loans.
-5. Integration with Human Decision-Making Although the model provides valuable insights, it should be used as a decision-support tool rather than a complete replacement for loan officers. Human judgement is still important, especially for borderline cases or for assessing qualitative factors such as business viability and local market conditions.
-6. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
+3. Use of the Model as an Early Warning System by periodically updating borrower data, the institution can identify customers whose risk of default is increasing and take early action, such as sending reminders, offering financial guidance, or restructuring loans. This can help reduce non-performing loans.
+   
+4. Integration with Human Decision-Making Although the model provides valuable insights, it should be used as a decision-support tool rather than a complete replacement for loan officers. Human judgment is still important, especially for borderline cases or for assessing qualitative factors such as business viability and local market conditions.
+   
+5. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
 
 
 
