@@ -274,14 +274,19 @@ Potential Overfitting Concern
 **Business Implications for Early Default Detection:**
 
 Advantages of Random Forest:
+
     1. Higher recall → Catches more potential defaults (critical for risk management)
+    
     2. Higher precision → Fewer false alarms (reduces operational costs)
+    
     3. Faster training → More efficient model development
+    
     4. Non-linear relationships → Better captures complex patterns in loan data
     
 **Considerations:**
 
     1. Slight overfitting → Monitor performance on new data closely
+    
     2. Model complexity → Harder to interpret than logistic regression
 
 Top 15 Most Important Features(Random Forest)
