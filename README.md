@@ -39,10 +39,18 @@ The dataset combines demographic, transactional, and behavioral data, making it 
 3.1 **Missing Values**
 
 Extreme cases with high levels of missing data were dropped to reduce noise and improve model reliability.
+We dropped unique IDs used for tracking and do not provide predictive value for loan repayment behavior
 
-3.2 **Exploratory Analysis**
+3.2 **Duplicates**
+Our data had no duplicated values
 
-Univariate analysis was conducted to understand feature distributions.
+
+3.3 **Exploratory Data Analysis(EDA)**
+
+3.3.1 **Univariate analysis**
+This was conducted to understand feature distributions.
+<img width="927" height="390" alt="image" src="https://github.com/user-attachments/assets/823948c0-ff5e-4bbf-a394-d2bb4e15b544" />
+
 
 Bivariate analysis was used to assess relationships between features and loan default risk.
 
