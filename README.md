@@ -118,6 +118,7 @@ Defaulters show classic delinquency patterns:
     • Maximum lateness extending over a year
     • Penalty accumulation
     • Reduced payment amounts and frequency
+    
 2. Actionable Early Warning Signals
 Monitor these thresholds for early intervention:
     • avg_days_late > 30 days
@@ -125,6 +126,7 @@ Monitor these thresholds for early intervention:
     • Any penalties incurred
     • num_ontime_payments below 3
     • avg_installment_paid dropping >20%
+    
 Recommendations:
     1. Key features for default prediction models are
         max_days_late, avg_days_late, num_ontime_payments, penalty_rate
@@ -152,7 +154,7 @@ Interpretation and Recommendation
 
 3. Loan Term Days vs. Default
 
-      Defaulters tend to have shorter loan terms compared to non-            defaulters this is because they require larger periodic                payments, less time for financial recovery and may divert the          purpose
+      Defaulters tend to have shorter loan terms compared to non-defaulters. This is because they require larger periodic                payments, less time for financial recovery and may divert the purpose
 
  **Customer Demographics Analysis**
 
@@ -213,18 +215,17 @@ For this use case:
     • Precision is important but secondary → Some false positives are acceptable if we catch more true defaults
 
    ** **Test Set Results (Most Important):****
-
    
-    • Recall: 92.53% → Captures 92.5% of actual defaults (good for            early warning)
-    • Precision: 97.64% → When model predicts "default", it's                correct 97.6% of the time
+    • Recall: 92.53% → Captures 92.5% of actual defaults (good for early warning)
+    • Precision: 97.64% → When model predicts "default", it's correct 97.6% of the time
     • F1-Score: 95.01% → Strong balance between precision and recall
     • Accuracy: 98.07% → Overall prediction accuracy
     
 **Key Takeaways for Business**
 
-    1. High default detection rate: 92.5% recall means the model             successfully identifies most at-risk loans
-    2. Low false alarm rate: 97.6% precision means only ~2.4% of             default warnings are false alarms
-    3. Model is reliable: Test performance closely matches training          performance
+    1. High default detection rate: 92.5% recall means the model successfully identifies most at-risk loans
+    2. Low false alarm rate: 97.6% precision means only ~2.4% of default warnings are false alarms
+    3. Model is reliable: Test performance closely matches training performance
     4. Good starting point: This baseline model provides a solid foundation for early default detection
 
 Payment behavior is the strongest predictor of loan default
@@ -251,7 +252,7 @@ Why: Employed to model complex non-linear interactions in repayment behavior
 
 Why LightGBM is Superior:
     1. Highest Default Detection Rate (95.84% recall)
-        ◦ Catches ~240 more defaults per 10,000 loans compared to                Random Forest
+        ◦ Catches ~240 more defaults per 10,000 loans compared to Random Forest
         ◦ Critical for risk minimization in early detection systems
     2. Best Overall Performance Balance
         ◦ Highest F1-score (97.25%) → optimal precision-recall tradeoff
@@ -285,7 +286,7 @@ Why LightGBM is Superior:
 **Business Interpretation**
 
 The model correctly identifies over 92% of defaulters
-Very low false alarm rate (~2.4%)
+Very low false alarm rate (2.4%)
 Minimal overfitting observed
 Strong and reliable baseline for early risk detection
 
@@ -309,11 +310,12 @@ Conclusion: LightGBM provides the best balance between risk detection, reliabili
 
 9. RECOMMENDATIONS AND CONCLUSION
 Based on the exploratory analysis and the performance of the predictive models, the following recommendations are proposed to improve credit risk management for SMEs and youth entrepreneurs:
-1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate the borrower charactristics such as num_ontime_payments, num_late_payments, avg_installment_paid and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
+
+1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate the borrower characteristics such as num_ontime_payments, num_late_payments, avg_installment_paid and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
 2. Risk-Based Borrower Segmentation Rather than treating all borrowers equally, lenders should classify applicants into different risk categories such as low, medium, and high-risk based on the predicted probability of default. This would allow institutions to:
     • Offer lower interest rates and higher loan limits to low-risk borrowers,
     • Apply stricter conditions or higher interest rates to medium-risk borrowers, and
-    • Limit exposure to high-risk borrowers or require additional guarantees. This approach supports both financial inclusion and portfolio sustainability.
+    • Limit exposure to high-risk borrowers or require additional guarantees. This approach supports both financial                inclusion and portfolio sustainability.
 3. Use of the Model as an Early Warning System By periodically updating borrower data, the institution can identify customers whose risk of default is increasing and take early action such as sending reminders, offering financial guidance, or restructuring loans. This can help reduce non-performing loans.
 4. Integration with Human Decision-Making Although the model provides valuable insights, it should be used as a decision-support tool rather than a complete replacement for loan officers. Human judgement is still important, especially for borderline cases or for assessing qualitative factors such as business viability and local market conditions.
 5. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
