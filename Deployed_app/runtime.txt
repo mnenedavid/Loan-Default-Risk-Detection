@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 python-3.11
-=======
-python-3.11
->>>>>>> a5ee36e (Rename runtime to runtime.txt)
