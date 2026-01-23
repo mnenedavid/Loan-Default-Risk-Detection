@@ -218,8 +218,8 @@ For this use case:
 
    **Test Set Results (Most Important)**
    
-    • Recall: 92.53% → Captures 92.5% of actual defaults (good for early warning)
-    • Precision: 97.64% → When the model predicts "default", it's correct 97.6% of the time
+    • Recall: 92.53% → Captures 92.5% of actual defaults (good for           early warning)
+    • Precision: 97.64% → When the model predicts "default", it's            correct 97.6% of the time
     • F1-Score: 95.01% → Strong balance between precision and recall
     • Accuracy: 98.07% → Overall prediction accuracy
     
@@ -242,7 +242,9 @@ Seasonality effects were observed, with December loans showing elevated default 
 **Advanced Models**
 
 Models Choosen
+
 🔹 Random Forest
+
 It captures nonlinear interactions, Robust to noisy features and Strong with behavioral data
 
 Random Forest Model Performance
