@@ -48,13 +48,115 @@ Our data had no duplicated values
 3.3 **Exploratory Data Analysis(EDA)**
 
 3.3.1 **Univariate analysis**
+
 This was conducted to understand feature distributions.
-<img width="927" height="390" alt="image" src="https://github.com/user-attachments/assets/823948c0-ff5e-4bbf-a394-d2bb4e15b544" />
+
+Target Variable: is_default
+
+<img width="860" height="354" alt="Univariate" src="https://github.com/user-attachments/assets/55fe6d10-7f36-40e9-9427-583bf645b9a5" />
+
+**Interpretation**
+
+-The dataset exhibited moderate class Imbalance so our Evaluation matrix included
+
+        ◦ Precision & Recall (especially for the minority "Default"              class)
+        ◦ F1-Score (balance between precision and recall)
+        ◦ ROC-AUC (overall discrimination ability)
+        ◦ Confusion Matrix (visualize trade-offs)
+
+**Recommendation**
+
+-Data splitting-We used stratified sampling (train/test/validation) to maintain the ∼80:20 class ratio.
+
+Model Selection-Algorithms that handle model imbalance well:
+        ◦ Random Forest (class weighting)
+        ◦ XGBoost (scale_pos_weight parameter)
+        ◦ Logistic Regression (class_weight='balanced')
 
 
-Bivariate analysis was used to assess relationships between features and loan default risk.
+3.3.2 **Bivariate analysis**
 
-3.3 **Feature Engineering**
+This was used to assess relationships between features and loan default risk.
+
+<img width="878" height="394" alt="Bivariate" src="https://github.com/user-attachments/assets/5616195c-2c2d-4cee-8a1e-050866568939" />
+
+**Findings**
+
+1. Default Rate by Quarter (Seasonal Pattern)
+         • Q1: 19.23%
+         • Q2: 20.17%
+         • Q3: 20.73% (peak)
+         • Q4: 18.85% (lowest)
+This implies that Q3 carries the highest risk, possibly due to seasonal economic factors or lending cycles.
+
+2. Default Rate by Gender (Minimal Difference)
+    • Gender 1.0: 19.51% default
+    • Gender 2.0: 19.88% default
+    • The difference is negligible (<0.4 percentage points), indicating gender is not a strong differentiator of default risk.
+    
+3. Default Rate by Loan Type (Significant Difference)
+    • New Loans: 25.29% default rate
+    • Existing Loans: 17.99% default rate
+    • Difference: 7.3 percentage points
+    
+New loans are significantly riskier, which aligns with typical lending patterns even in the industry where new borrowers have unproven creditworthiness.
+
+4. Top 10 Products by Default Rate
+    • Product 30149 has 100% default rate but only 2 loans (small            sample).
+    • Other high-risk products have default rates ranging from 40% to         83%.
+    • These high-risk products represent specific segments that may          need product-level risk review.
+
+**Payment Behaviour Analysis**
+
+<img width="870" height="502" alt="PBA" src="https://github.com/user-attachments/assets/d4a29aaf-aec7-4e3d-b96b-00e9b02ed155" />
+
+**Interpretations and Recommendations**
+
+1. Default is Preceded by Clear Delinquency Patterns
+Defaulters show classic delinquency patterns:
+    • Chronic lateness (avg 222 days late)
+    • Maximum lateness extending over a year
+    • Penalty accumulation
+    • Reduced payment amounts and frequency
+2. Actionable Early Warning Signals
+Monitor these thresholds for early intervention:
+    • avg_days_late > 30 days
+    • max_days_late > 90 days
+    • Any penalties incurred
+    • num_ontime_payments below 3
+    • avg_installment_paid dropping >20%
+Recommendations:
+    1. Key features for default prediction models are
+        max_days_late, avg_days_late, num_ontime_payments, penalty_rate
+        
+    2. Create a composite "delinquency score" combining:
+        ◦ Days late metrics
+        ◦ Penalty indicators
+        ◦ Payment frequency
+        
+    3. Segment customers by payment behavior:
+        ◦ "At-risk": High days late + penalties
+        ◦ "Watchlist": Reduced payment amounts/frequency
+        ◦ "Low-risk": Consistent on-time payments, no penalties
+
+**Loan Characteristics Analysis**
+
+Interpretation and Recommendation
+
+1. Loan Amount vs. Default
+         ◦ Small loan amounts have more defaulters
+         ◦ Large loan amounts have less defaulters
+   implying that small loans carry disproportionate risk.
+
+2. Interest Rate vs. Default-both very high and very low interest rates are associated with default
+
+3. Loan Term Days vs. Default
+
+      Defaulters tend to have shorter loan terms compared to non-            defaulters this is because they require larger periodic                payments, less time for financial recovery and may divert the          purpose
+
+ **Customer Demographics Analysis**
+
+   1. Age
 
 We identified the Top most important features using absolute coefficient values from the logistic regression baseline model.
 
