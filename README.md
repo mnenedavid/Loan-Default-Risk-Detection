@@ -157,61 +157,130 @@ Interpretation and Recommendation
  **Customer Demographics Analysis**
 
    1. Age
+      
+<img width="308" height="313" alt="Default Rate by age" src="https://github.com/user-attachments/assets/0823040a-2f3d-4c52-b90e-ec27c03a3536" />
 
-We identified the Top most important features using absolute coefficient values from the logistic regression baseline model.
+**Findings**
 
-Top Predictive Features
+More default is experienced in younger years compared to older years
 
-   Num_ontime_payments-More on-time payments reduce default risk   
-   Num_late_payments-Higher late payments increase default risk   
-   Late_payment_rate-Critical early warning signal   
-   Has_payment_history-Existence of repayment history lowers uncertainty   
-   Num_penalties-Indicates financial distress  
+2. Gender
 
-**Key Insights**
+<img width="884" height="382" alt="Gender Analysis" src="https://github.com/user-attachments/assets/046c7104-76d0-434f-b78d-bcd86d15a806" />
+
+Findings- No significant difference in default across both genders
+
+3. Account Age Risk Analysis
+
+4.<img width="316" height="280" alt="Account Age Distribution" src="https://github.com/user-attachments/assets/07f93f03-5ce8-4c7b-ad6b-249f1ea5041b" />
+ 
+Findings- Default risk decreases with  account age
+
+3.3.3 **Multivariate Analysis**
+
+**Correlation Matrix Heatmap(Numerical Variables)**
+<img width="578" height="495" alt="Correlation matrix" src="https://github.com/user-attachments/assets/9495acaa-8922-4296-8fe4-3a438e356cbb" />
+
+1. Strongest Correlations with Default (is_default)
+    • max_days_late: 0.65 (strong positive)
+    • avg_days_late: 0.58 (strong positive)
+    • previous_loan_count: -0.10 (weak negative)
+    • age: -0.07 (weak negative)
+    • account_age_days: -0.07 (weak negative)
+This implies Higher delinquency (more days late) strongly predicts default, while more experienced borrowers (older, more loans) are slightly less likely to default.
+
+2. High Feature Collinearity (Potential Redundancy)
+    • max_days_late & avg_days_late: 0.91 (very strong correlation)
+    • account_age_days & previous_loan_count: 0.83 (strong correlation)
+    • loanamount & previous_loan_count: 0.45 (moderate correlation)
+    • loanamount & interest_rate: 0.35 (moderate correlation)
+    
+3. Weak or Negligible Correlations with Default
+    • total_unpaid_amount: 0.001 (almost no correlation)
+    • loan_to_limit_ratio: -0.01 (almost no correlation)
+    • num_late_payments: -0.04 (very weak negative)
+    
+4. Notable Behavioral Feature Relationships
+    • late_payment_rate & num_late_payments: 0.69 (moderately strong)
+    • interest_rate & num_late_payments: 0.19 (weak positive)
+    • repayment_ratio & loanamount: 0.22 (weak positive)
+
+   
+**Baseline Model**
+
+For this use case:
+    • Recall is the most critical metric → We want to get as many potential defaults as possible (minimize false negatives)
+    • Precision is important but secondary → Some false positives are acceptable if we catch more true defaults
+
+   ** **Test Set Results (Most Important):****
+
+   
+    • Recall: 92.53% → Captures 92.5% of actual defaults (good for            early warning)
+    • Precision: 97.64% → When model predicts "default", it's                correct 97.6% of the time
+    • F1-Score: 95.01% → Strong balance between precision and recall
+    • Accuracy: 98.07% → Overall prediction accuracy
+    
+**Key Takeaways for Business**
+
+    1. High default detection rate: 92.5% recall means the model             successfully identifies most at-risk loans
+    2. Low false alarm rate: 97.6% precision means only ~2.4% of             default warnings are false alarms
+    3. Model is reliable: Test performance closely matches training          performance
+    4. Good starting point: This baseline model provides a solid foundation for early default detection
 
 Payment behavior is the strongest predictor of loan default
 Certain loan products (e.g., Product IDs 30150, 30154, 30111) exhibit higher risk
 Seasonality effects were observed, with December loans showing elevated default risk
 
-4. **Exploratory Data Analysis (EDA)**
-Target Variable Distribution
-      Non-default: 80.21%
-      Default: 19.79%
-   
-**Interpretation**
-The dataset shows moderate class imbalance (≈80:20), which is manageable without aggressive rebalancing.
-A naïve model predicting all loans as non-default would achieve 80.21% accuracy, setting a strong baseline to outperform.
+**Feature Importance**
+**Top 15 Most Important Features**
 
-Modeling Implications
+<img width="574" height="404" alt="Top 15 Most Important Features" src="https://github.com/user-attachments/assets/024ffade-9112-4372-a4ca-972ae7beafac" />
 
-Focus on Recall, especially for the default class
+**Advanced Models**
 
-Use Precision, F1-score, ROC-AUC, and Confusion Matrix for comprehensive evaluation
+Models Choosen
+🔹 Random Forest
+Why: Captures nonlinear interactions, Robust to noisy features & Strong with behavioral data
 
-Stratified data splitting is recommended
+Top 15 Most Important Features(Random Forest)
+<img width="586" height="415" alt="Top 15 most important-random forest" src="https://github.com/user-attachments/assets/0645dd99-e69b-499e-a681-2d6f309b19ae" />
 
-5**Modeling Approach**
 
-**Baseline Model**
+🔹 LightGBM
+Why: Employed to model complex non-linear interactions in repayment behavior
 
-Algorithm: Logistic Regression with ElasticNet Regularization
-Solver: saga
+Why LightGBM is Superior:
+    1. Highest Default Detection Rate (95.84% recall)
+        ◦ Catches ~240 more defaults per 10,000 loans compared to                Random Forest
+        ◦ Critical for risk minimization in early detection systems
+    2. Best Overall Performance Balance
+        ◦ Highest F1-score (97.25%) → optimal precision-recall tradeoff
+        ◦ Highest accuracy (98.92%) → most reliable overall predictions
+    3. Computational Efficiency
+        ◦ Fastest training → enables rapid model iteration
+        ◦ Efficient memory usage → scalable to larger datasets
+    4. Modern Algorithm Advantages
+        ◦ Gradient boosting handles complex patterns better
+        ◦ Built-in regularization reduces overfitting risk
+        ◦ Native support for categorical features
 
-**Best Hyperparameters**
-
-C = 1
-
-l1_ratio = 0.7
-
-Penalty = ElasticNet
-
-**Test Set Performance**
-
-Recall: 92.53%
-Precision: 97.64%
-F1-score: 95.01%
-Accuracy: 98.07%
+   Business Justification for Choosing LightGBM:
+1. Exceptional & Consistent Performance
+    • F1-Score > 99% across all folds
+    • Minimal variation (±0.07%) → model is not overfitting
+    • Reliable across different data segments
+2. Outstanding Default Detection (Recall)
+    • CV Recall: 98.70% → catches nearly all defaults
+    • Even higher than single split recall (95.84%)
+    • Business impact: Maximum risk coverage with minimal missed defaults
+3. Near-Perfect Precision
+    • 99.64% precision → minimal false alarms
+    • When model flags a loan as risky, it's correct 99.6% of the time
+    • Operational efficiency: Low investigation cost for false positives
+4. Model Robustness Validated
+    • Low standard deviations across all metrics
+    • Consistent performance across 5 different test sets
+    • No data leakage or split bias concerns
 
 **Business Interpretation**
 
@@ -236,6 +305,18 @@ Several advanced models were evaluated, and the best-performing model was LightG
 
 Conclusion: LightGBM provides the best balance between risk detection, reliability, and scalability.
 
+**EXPORT LIGHTGBM MODEL FOR APP DEPLOYEMENT USE**
+
+9. RECOMMENDATIONS AND CONCLUSION
+Based on the exploratory analysis and the performance of the predictive models, the following recommendations are proposed to improve credit risk management for SMEs and youth entrepreneurs:
+1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate the borrower charactristics such as num_ontime_payments, num_late_payments, avg_installment_paid and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
+2. Risk-Based Borrower Segmentation Rather than treating all borrowers equally, lenders should classify applicants into different risk categories such as low, medium, and high-risk based on the predicted probability of default. This would allow institutions to:
+    • Offer lower interest rates and higher loan limits to low-risk borrowers,
+    • Apply stricter conditions or higher interest rates to medium-risk borrowers, and
+    • Limit exposure to high-risk borrowers or require additional guarantees. This approach supports both financial inclusion and portfolio sustainability.
+3. Use of the Model as an Early Warning System By periodically updating borrower data, the institution can identify customers whose risk of default is increasing and take early action such as sending reminders, offering financial guidance, or restructuring loans. This can help reduce non-performing loans.
+4. Integration with Human Decision-Making Although the model provides valuable insights, it should be used as a decision-support tool rather than a complete replacement for loan officers. Human judgement is still important, especially for borderline cases or for assessing qualitative factors such as business viability and local market conditions.
+5. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
 
 
 
