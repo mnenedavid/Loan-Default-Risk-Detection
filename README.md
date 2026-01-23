@@ -308,8 +308,7 @@ Conclusion: LightGBM provides the best balance between risk detection, reliabili
 
 **EXPORT LIGHTGBM MODEL FOR APP DEPLOYEMENT USE**
 
-9. RECOMMENDATIONS AND CONCLUSION
-Based on the exploratory analysis and the performance of the predictive models, the following recommendations are proposed to improve credit risk management for SMEs and youth entrepreneurs:
+**RECOMMENDATIONS AND CONCLUSION**
 
 1. Adoption of Machine Learning-Based Credit Scoring Financial institutions should adopt machine learning-based credit scoring systems instead of relying solely on traditional rule-based or manual credit assessments. The models developed in this study demonstrate the borrower characteristics such as num_ontime_payments, num_late_payments, avg_installment_paid and late_payment_rate are important predictors of default. Using these, models can improve the early detection of loan defaulters and help the business make loan policies that will reduce non-performing loans and promote financial inclusion through fairer credit decisions.
 2. Risk-Based Borrower Segmentation Rather than treating all borrowers equally, lenders should classify applicants into different risk categories such as low, medium, and high-risk based on the predicted probability of default. This would allow institutions to:
