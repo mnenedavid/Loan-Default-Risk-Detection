@@ -364,7 +364,7 @@ def main():
             "medium": {
                 "age": 40, "account_age_days": 100, "loanamount": 50000,
                 "loan_term_months": 10, "num_ontime_payments": 3,
-                "num_late_payments": 9, "num_penalties": 0,
+                "num_late_payments": 3, "num_penalties": 0,
                 "previous_loan_count": 0, "previous_clearance_rate": 0.65,
                 "loan_size_escalation": 2.1, "has_guarantor": "No",
                 "gender": "Female", "productid": "Other", "loan_month": 11
