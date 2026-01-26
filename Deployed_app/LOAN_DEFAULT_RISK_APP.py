@@ -363,7 +363,7 @@ def main():
             },
             "medium": {
                 "age": 40, "account_age_days": 100, "loanamount": 50000,
-                "loan_term_months": 20, "num_ontime_payments": 3,
+                "loan_term_months": 10, "num_ontime_payments": 3,
                 "num_late_payments": 9, "num_penalties": 0,
                 "previous_loan_count": 0, "previous_clearance_rate": 0.65,
                 "loan_size_escalation": 2.1, "has_guarantor": "No",
@@ -371,8 +371,8 @@ def main():
             },
             "bad": {
                 "age": 22, "account_age_days": 90, "loanamount": 20000,
-                "loan_term_months": 36, "num_ontime_payments": 2,
-                "num_late_payments": 10, "num_penalties": 4,
+                "loan_term_months": 36, "num_ontime_payments": 3,
+                "num_late_payments": 3, "num_penalties": 4,
                 "previous_loan_count": 0, "previous_clearance_rate": 0.0,
                 "loan_size_escalation": 4.0, "has_guarantor": "No",
                 "gender": "Male", "productid": "Other", "loan_month": 1
