@@ -369,8 +369,9 @@ Conclusion: LightGBM provides the best balance between risk detection, reliabili
    
 5. Continuous Model Improvement The accuracy of the model can be further improved by incorporating more detailed borrower information, such as business cashflows, mobile money transaction history, and past repayment behavior. Regular retraining of the model with new data will also ensure that it remains relevant and reliable over time.
 
-
-
+**DEPLOYMENT**
+Have a look at our model deployment
+https://loan-default-risk-detection-j3gtsrd8mmpkygkf8mup3r.streamlit.app/
 
 
 
